@@ -1,0 +1,13 @@
+#!/bin/csh
+
+echo "Setting Environment Variables";
+
+set architecture = `uname -m`;
+setenv S2PATH /usr/local/s2plot;
+setenv S2ARCH "linux-gnu-$architecture";
+setenv S2PLOT_TEXPATH ${S2PATH}/textures
+setenv LD_LIBRARY_PATH "${S2PATH}/${S2ARCH}";
+
+echo 'Attempting to build';
+cd /usr/local/s2plot;
+csh scripts/build.csh;
