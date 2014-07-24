@@ -12,4 +12,4 @@ s2plot install scripts for Michael &lt;3
 
 and then
 
-`wget https://raw.githubusercontent.com/tlherr/s2plot/master/install2 | csh` 
+`wget https://raw.githubusercontent.com/tlherr/s2plot/master/build.sh | csh` 
