@@ -10,4 +10,10 @@ setenv LD_LIBRARY_PATH "${S2PATH}/${S2ARCH}";
 
 echo 'Attempting to build';
 cd /usr/local/s2plot;
-csh scripts/build.csh;
+
+./scripts/build-lib.csh;
+./scripts/build-apps.csh;
+./scripts/build-viewer.csh;
+./scripts/build-examples.csh;
+./scripts/build-prc-module.csh;
+
