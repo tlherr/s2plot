@@ -16,46 +16,31 @@ export S2LIBCOMPILER="gcc -fopenmp -lGL -lglut";
 
 export S2CCMPILER="gcc -c -D_GNU_SOURCE -I/usr/local/s2plot/src -m64 -O3 -ftree-vectorize -fopenmp -Wall -DS2FREETYPE"
 
-echo "Symlinking GCC Because s2plot is fucking retard"
-
-cd /usr/local;
-mkdir gcc;
-cd gcc;
-mkdir "4.4.5";
-cd "4.4.5";
-mkdir bin;
-cd bin;
-ln -s /usr/bin/gcc .;
-
 
 echo "Updating Packages";
 sudo apt-get update;
 name=$(uname -r);
 echo "Installing Headers/Build Essentials/Wget/Csh";
-sudo apt-get install linux-headers-$name build-essential wget libhpdf-2.2.1 libhpdf-dev freeglut3 
-freeglut3-dev libfreetype6 libfreetype6-dev;
+sudo apt-get install linux-headers-$name build-essential wget csh libhpdf-2.2.1 libhpdf-dev freeglut3 freeglut3-dev libfreetype6 libfreetype6-dev zip unzip;
+
 cd ~/;
 echo "Downloading s2plot 3.2.1";
-wget http://astronomy.swin.edu.au/s2plot/versions/s2plot-3.2.1.tar.bz2;
+wget https://github.com/tlherr/s2plot/releases/download/1.0/s2plot.zip;
 echo "Expanding Archive";
-bunzip2 s2plot-3.2.1.tar.bz2;
-tar -xvf s2plot-3.2.1.tar;
+unzip s2plot.zip;
 
 echo "Moving into /usr/local";
 sudo mkdir /usr/local/s2plot;
-sudo cp -r s2plot-3.2.1/* /usr/local/s2plot;
-
-# this is literally hitler but w/e
-# sudo chmod -R 777 /usr/local/s2plot;
-
+sudo cp -r s2plot/* /usr/local/s2plot;
+sudo ln -s /usr/lib/x86_64-linux-gnu/libXpm.so.4 /usr/lib/x86_64-linux-gnu/libXpm.so
 
 echo 'Attempting to build';
 cd /usr/local/s2plot;
 
-./scripts/build-lib.csh;
-./scripts/build-apps.csh;
-./scripts/build-viewer.csh;
-./scripts/build-examples.csh;
-./scripts/build-prc-module.csh;
+./scripts/build.csh;
 
 echo "Fin";
+
+echo "Testing this shit"
+
+./linux-gnu-x86_64/s2view
