@@ -34,13 +34,8 @@ sudo mkdir /usr/local/s2plot;
 sudo cp -r s2plot/* /usr/local/s2plot;
 sudo ln -s /usr/lib/x86_64-linux-gnu/libXpm.so.4 /usr/lib/x86_64-linux-gnu/libXpm.so
 
-echo 'Attempting to build';
-cd /usr/local/s2plot;
+./install.csh
 
-./scripts/build.csh;
-
-echo "Fin";
-
-echo "Testing this shit"
+echo "Running Test";
 
 ./linux-gnu-x86_64/s2view
