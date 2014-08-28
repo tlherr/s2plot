@@ -3,6 +3,7 @@
 echo 'Attempting to build';
 cd /usr/local/s2plot;
 
+setenv architecture `uname -m`;
 setenv S2PATH /usr/local/s2plot;
 setenv S2ARCH "linux-gnu-$architecture";
 setenv S2PLOT_TEXPATH ${S2PATH}/textures
@@ -15,4 +16,4 @@ setenv S2LIBCOMPILER "gcc -fopenmp -lGL -lglut";
 setenv S2CCMPILER "gcc -c -D_GNU_SOURCE -I/usr/local/s2plot/src -m64 -O3 -ftree-vectorize -fopenmp -Wall -DS2FREETYPE"
 
 
-csh /scripts/build.csh;
+csh scripts/build.csh;
