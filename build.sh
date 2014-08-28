@@ -21,7 +21,7 @@ echo "Updating Packages";
 sudo apt-get update;
 name=$(uname -r);
 echo "Installing Headers/Build Essentials/Wget/Csh";
-sudo apt-get install linux-headers-$name build-essential wget csh libhpdf-2.2.1 libhpdf-dev freeglut3 freeglut3-dev libfreetype6 libfreetype6-dev zip unzip;
+sudo apt-get install -y linux-headers-$name build-essential wget csh libhpdf-2.2.1 libhpdf-dev freeglut3 freeglut3-dev libfreetype6 libfreetype6-dev zip unzip;
 
 cd ~/;
 echo "Downloading s2plot 3.2.1";
